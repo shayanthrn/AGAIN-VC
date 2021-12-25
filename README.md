@@ -1,3 +1,6 @@
+# Description
+This is my thesis which is about any-to-any voice conversion. A modified version of AGAIN-VC paper and change some parts of its official implementation for adapting in Persian, Official implementation is available on: https://github.com/KimythAnly/AGAIN-VC
+
 # AGAIN-VC
 This is the official implementation of the paper [**AGAIN-VC: A One-shot Voice Conversion using Activation Guidance and Adaptive Instance Normalization**](https://arxiv.org/abs/2011.00316).
 AGAIN-VC is an auto-encoder-based model, comprising of a single encoder and a decoder. With a proper activation as an information bottleneck on content embeddings, the trade-off between the synthesis quality and thespeaker similarity of the converted speech is improved drastically. 
