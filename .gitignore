@@ -1,7 +1,0 @@
-*.yaml
-*.npy
-*.pkl
-*.pyc
-checkpoints/
-wandb/
-data/generated/

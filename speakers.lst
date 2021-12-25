@@ -1,0 +1,66 @@
+id    name       last_name       gender    age age_type
+001   شیما       جان قربان       female    34  estimated
+002   بهروز      رضوی            male      73  estimated
+003   احمد       لشینی           male      69  estimated
+004   سوسن       حسنی دخت        female    44  estimated
+005   شاهین      احمدیان         male      43  estimated
+006   سید حامد   نجم الهدی       male      39  estimated
+007   فاطمه      عباسی           female    42  exact
+008   سودابه     اقاجانیان       female    58  exact
+009   علی اله    دانه            male      37  estimated
+010   باران      بهرامی          female    34  estimated
+011   محمد       نظری            male      50  estimated
+012   صفا        آقاجانی         female    61  exact
+013   حامد       عباسی           male      44  estimated
+014   ناهید      مسلمی           female    65  exact
+015   ایوب       آقاخانی         male      45  exact
+016   فاطمه      رکنی            female    58  exact
+017   حمید       محمدی           male      37  exact
+018   نگین       خواجه نصیر      female    39  exact
+019   یاسر       دعاگو           male      39  estimated
+020   حافظ       کاظم زاده       male      32  exact
+021   عباس       نباتی           male      78  exact
+022   فاطمه      فراهانی         female    44  estimated
+023   رضا        شجاعی           female    39  estimated
+024   کیوان      همتی            male      45  estimated
+025   شیرین      هاشمی           female    41  exact
+026   نورالدین   جوادیان         male      57  exact
+027   قطب‌الدین   صادقی           male      68  exact
+028   شیرین      پورعسگری        female    37  estimated
+029   اسماعیل    شفیعی سروستانی  male      62  exact
+030   بهرام      بهرامی          male      64  estimated
+031   زهره       کدخدازاده       female    34  estimated
+032   کیوان      نقره کار        male      41  estimated
+033   مهدی       مهدی‌قلی         male      34  estimated
+034   فریناز     ثریا            female    35  estimated
+035   رضا        خضرایی          male      64  estimated
+036   سیدحسین    حسینی           male      37  estimated
+037   نفیسه      شافی            female    34  estimated
+038   پارسا      حداد            male      37  estimated
+039   فاطمه      حقیقت‌ناصری      female    44  exact
+040   محمدحسین   غلامعلی          male      54  estimated
+041   فریبا      رمضان‌پور        female    51  exact
+042   مریم       بیگانه          female    56  exact
+043   مهدی       نمینی‌مقدم       male      49  estimated
+044   سعیده      فرضی            female    54  estimated
+045   منصور      ضابطیان         male      50  exact
+046   ساحل       کریمی           female    37  estimated
+047   سیدسعید    حسینی           male      39  estimated
+048   معصومه     روح‌بخش          female    39  estimated
+049   علی‌همت     مومیوند         male      60  exact
+050   شیوا       خنیاگر          female    53  exact
+051   حمزه       علی‌محمدی        male      43  estimated
+052   مسعود      خواجه‌وند        male      41  estimated
+053   مهدی       آقابیگی         male      46  exact
+054   بهناز      بهروزی          female    36  estimated
+055   سمیه       رحیمی           female    35  exact
+056   سیدمهدی    مفیدی‌راد        male      35  exact
+057   محمد       درخشنده         male      38  exact
+058   مسعود      فروتن           male      75  exact
+059   علیرضا     تابان           male      47  estimated
+060   سبحان      اکرامی          male      39  exact
+061   نسیم       رفیعی           female    42  exact
+062   عادل       فردوسی پور      male      46  exact
+063   مریم       محبوب           female    37  estimated
+064   آرمان      سلطلن زاده      male      33  exact
+066   رضا        عمرانی          male      60  exact

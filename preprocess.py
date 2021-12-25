@@ -3,10 +3,10 @@ import copy
 import logging
 
 import numpy as np
-import pyworld as pw
-import resemblyzer
+# import pyworld as pw
+# import resemblyzer
 from glob import glob
-from tqdm import tqdm
+# from tqdm import tqdm
 from functools import partial
 from multiprocessing.pool import ThreadPool
 
