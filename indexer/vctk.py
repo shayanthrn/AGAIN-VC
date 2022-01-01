@@ -32,5 +32,4 @@ class Indexer(BaseIndexer):
                 'train': train,
                 'dev': dev
                 }
-
         return indexes

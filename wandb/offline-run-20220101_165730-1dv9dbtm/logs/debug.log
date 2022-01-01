@@ -1,0 +1,29 @@
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_setup.py:_flush():71] setting env: {}
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_setup.py:_flush():71] setting login settings: {}
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_setup.py:_flush():71] setting login settings: {'mode': 'offline'}
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_init.py:_log_setup():371] Logging user logs to C:\university\Thesis\AGAIN-VC - Copy\wandb\offline-run-20220101_165730-1dv9dbtm\logs\debug.log
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_init.py:_log_setup():372] Logging internal logs to C:\university\Thesis\AGAIN-VC - Copy\wandb\offline-run-20220101_165730-1dv9dbtm\logs\debug-internal.log
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_init.py:init():404] calling init triggers
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_init.py:init():409] wandb.init called with sweep_config: {}
+config: {'_name': 'train_again', 'writer': 'wandb', 'ckpt_dir': 'checkpoints/again', 'flag': 'c4s', 'dataset': {'dataset_name': 'vctk', 'feat_path': 'data/features/vctk', 'feat': ['mel'], 'indexes_path': './data/indexes/vctk/indexes.pkl', 'seglen': 128}, 'dataloader': {'train': {'batch_size': 32, 'shuffle': True}, 'dev': {'batch_size': 64}}, 'build': {'model_name': 'again', 'model': {'params': {'encoder_params': {'c_in': 80, 'c_h': 256, 'c_out': 4, 'n_conv_blocks': 6, 'subsample': [1, 1, 1, 1, 1, 1]}, 'decoder_params': {'c_in': 4, 'c_h': 256, 'c_out': 80, 'n_conv_blocks': 6, 'upsample': [1, 1, 1, 1, 1, 1]}, 'activation_params': {'act': 'sigmoid', 'params': {'alpha': 0.1}}}}, 'optimizer': {'params': {'lr': 0.0005, 'betas': [0.9, 0.999], 'amsgrad': True, 'weight_decay': 0.0001}, 'grad_norm': 3}}, '_args': Namespace(config='config/train_again-c4s.yaml', dry=False, debug=False, seed=1234567, load='', njobs=4, total_steps=100000, verbose_steps=10, log_steps=500, save_steps=2000, eval_steps=5000)}
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [wandb_init.py:init():460] starting backend
+2022-01-01 16:57:30,346 INFO    MainThread:14664 [backend.py:_multiprocessing_setup():99] multiprocessing start_methods=spawn, using: spawn
+2022-01-01 16:57:30,361 INFO    MainThread:14664 [backend.py:ensure_launched():216] starting backend process...
+2022-01-01 16:57:30,439 INFO    MainThread:14664 [backend.py:ensure_launched():221] started backend process with pid: 10808
+2022-01-01 16:57:30,439 INFO    MainThread:14664 [wandb_init.py:init():469] backend started and connected
+2022-01-01 16:57:30,455 INFO    MainThread:14664 [wandb_init.py:init():533] updated telemetry
+2022-01-01 16:57:30,518 INFO    MainThread:14664 [wandb_init.py:init():606] starting run threads in backend
+2022-01-01 16:57:32,466 INFO    MainThread:14664 [wandb_run.py:_console_start():1810] atexit reg
+2022-01-01 16:57:32,466 INFO    MainThread:14664 [wandb_run.py:_redirect():1684] redirect: SettingsConsole.WRAP
+2022-01-01 16:57:32,466 INFO    MainThread:14664 [wandb_run.py:_redirect():1721] Wrapping output streams.
+2022-01-01 16:57:32,466 INFO    MainThread:14664 [wandb_run.py:_redirect():1745] Redirects installed.
+2022-01-01 16:57:32,466 INFO    MainThread:14664 [wandb_init.py:init():633] run started, returning control to user process
+2022-01-01 17:04:13,427 INFO    MainThread:14664 [wandb_run.py:_atexit_cleanup():1780] got exitcode: 255
+2022-01-01 17:04:13,427 INFO    MainThread:14664 [wandb_run.py:_restore():1752] restore
+2022-01-01 17:04:14,084 INFO    MainThread:14664 [wandb_run.py:_wait_for_finish():1912] got exit ret: 
+2022-01-01 17:04:14,193 INFO    MainThread:14664 [wandb_run.py:_wait_for_finish():1912] got exit ret: done: true
+exit_result {
+}
+local_info {
+}
+

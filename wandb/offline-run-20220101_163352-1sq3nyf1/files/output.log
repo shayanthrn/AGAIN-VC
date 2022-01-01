@@ -1,0 +1,43 @@
+
+error for file name:  {'loss_rec': 0.26097381114959717}
+100%|████████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.13s/it, loss_rec=0.596, steps=60]
+100%|███████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.12s/it, loss_rec=0.531, steps=120]
+100%|███████████████████████████████████████████████████████| 60/60 [01:06<00:00,  1.10s/it, loss_rec=0.403, steps=180]
+100%|███████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.13s/it, loss_rec=0.396, steps=240]
+100%|███████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.13s/it, loss_rec=0.321, steps=300]
+100%|███████████████████████████████████████████████████████| 60/60 [01:21<00:00,  1.35s/it, loss_rec=0.348, steps=360]
+100%|███████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.12s/it, loss_rec=0.307, steps=420]
+100%|████████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.12s/it, loss_rec=0.33, steps=480]
+100%|███████████████████████████████████████████████████████| 60/60 [01:09<00:00,  1.15s/it, loss_rec=0.319, steps=540]
+100%|███████████████████████████████████████████████████████| 60/60 [01:08<00:00,  1.13s/it, loss_rec=0.291, steps=600]
+100%|███████████████████████████████████████████████████████| 60/60 [01:08<00:00,  1.14s/it, loss_rec=0.301, steps=660]
+100%|███████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.13s/it, loss_rec=0.283, steps=720]
+100%|███████████████████████████████████████████████████████| 60/60 [01:07<00:00,  1.13s/it, loss_rec=0.271, steps=780]
+100%|███████████████████████████████████████████████████████| 60/60 [01:06<00:00,  1.11s/it, loss_rec=0.266, steps=840]
+100%|███████████████████████████████████████████████████████| 60/60 [01:06<00:00,  1.11s/it, loss_rec=0.273, steps=900]
+100%|███████████████████████████████████████████████████████| 60/60 [01:32<00:00,  1.55s/it, loss_rec=0.279, steps=960]
+ 65%|███████████████████████████████████▊                   | 39/60 [00:46<00:25,  1.20s/it, loss_rec=0.282, steps=990]
+Traceback (most recent call last):
+  File "C:\university\Thesis\AGAIN-VC - Copy\train.py", line 49, in <module>
+    trainer.train(total_steps=args.total_steps,
+  File "C:\university\Thesis\AGAIN-VC - Copy\agent\trainer.py", line 56, in train
+    self.writer.mels_summary(
+  File "C:\university\Thesis\AGAIN-VC - Copy\util\mylogger.py", line 58, in _mels_summary
+    self.log({
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\wandb_run.py", line 1334, in log
+    self.history._flush()
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\wandb_history.py", line 59, in _flush
+    self._callback(row=self._data, step=self._step)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\wandb_run.py", line 1017, in _history_callback
+    self._backend.interface.publish_history(
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\interface\interface.py", line 496, in publish_history
+    data = data_types.history_dict_to_json(run, data, step=step)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\data_types.py", line 2597, in history_dict_to_json
+    payload[key] = val_to_json(run, key, val, namespace=step)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\data_types.py", line 2638, in val_to_json
+    item.bind_to_run(run, key, namespace, id_=i)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\data_types.py", line 2264, in bind_to_run
+    super(Image, self).bind_to_run(run, key, step, id_)
+  File "C:\Users\HP\AppData\Local\Programs\Python\Python39\lib\site-packages\wandb\sdk\data_types.py", line 498, in bind_to_run
+    raise ValueError(
+ValueError: Media train/seen/Melspectrogram is invalid. Please remove invalid filename characters

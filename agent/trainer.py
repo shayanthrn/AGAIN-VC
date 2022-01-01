@@ -43,19 +43,19 @@ class Trainer(BaseAgent):
                     if self.writer is None:
                         print('* self.writer is not implemented.')
                     else:
-                        self.writer.log(meta['log'], step=self.model_state['steps'])
+                        # self.writer.log(meta['log'], step=self.model_state['steps'])
                         mels = meta['mels']
                         _data = {}
                         for k, v in mels.items():
                             if v.shape[1] != 80:
                                 v = torch.nn.functional.interpolate(v.transpose(1,2), 80).transpose(1,2)
                             _data[k] = (v.cpu().numpy()/5+1, self.mel2wav(v))
-                        self.writer.mels_summary(
-                            tag='train/seen',
-                            data=_data,
-                            sample_rate=22050,
-                            step=self.model_state['steps']
-                        )
+                        # self.writer.mels_summary(
+                        #     tag='train/seen',
+                        #     data=_data,
+                        #     sample_rate=22050,
+                        #     step=self.model_state['steps']
+                        # )
                         
                 if self.model_state['steps'] % verbose_steps == 0:
                     meta['log']['steps'] = self.model_state['steps']
