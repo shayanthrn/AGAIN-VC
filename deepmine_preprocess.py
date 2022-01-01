@@ -88,7 +88,7 @@ for file in final_listofdataset:
     file_segments = segments[file['file_id']]
     idcounter = 0
     for segment in file_segments:
-        outputname = path + file['speaker_id'] + "_" + idcounter
+        outputname = path + file['speaker_id'] + "_" + str(idcounter)
         start = segment[0] * sr
         end = segment[1] * sr
         data = audio[int(start):int(end)]
