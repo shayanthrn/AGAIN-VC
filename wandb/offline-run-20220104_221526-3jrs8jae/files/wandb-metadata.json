@@ -1,0 +1,31 @@
+{
+    "os": "Windows-10-10.0.19041-SP0",
+    "python": "3.9.6",
+    "heartbeatAt": "2022-01-04T18:45:28.240040",
+    "startedAt": "2022-01-04T18:45:26.399839",
+    "docker": null,
+    "gpu": "GeForce 940M",
+    "gpu_count": 1,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [
+        "-c",
+        "config/train_again-c4s.yaml",
+        "--seed",
+        "1234567",
+        "--total-steps",
+        "100000"
+    ],
+    "state": "running",
+    "program": "C:\\university\\Thesis\\AGAIN-VC\\train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/shayanthrn/AGAIN-VC.git",
+        "commit": "593bbea6a6947d8297c8b5034692001b4c0c9899"
+    },
+    "email": "shayanthrn@gmail.com",
+    "root": "C:/university/Thesis/AGAIN-VC",
+    "host": "DESKTOP-BM1C05L",
+    "username": "HP",
+    "executable": "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python39\\python.exe"
+}

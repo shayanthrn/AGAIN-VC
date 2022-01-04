@@ -1,0 +1,9 @@
+  0%|                                                                                            | 0/2 [00:03<?, ?it/s]
+Traceback (most recent call last):
+  File "C:\university\Thesis\AGAIN-VC\train.py", line 49, in <module>
+    trainer.train(total_steps=args.total_steps,
+  File "C:\university\Thesis\AGAIN-VC\agent\trainer.py", line 40, in train
+    meta = self.step_fn(self.model_state, data)
+  File "C:\university\Thesis\AGAIN-VC\model\again.py", line 73, in train_step
+    print("step is:",model_state['step'],' and Lr is:' ,optimizer.param_groups[0]['lr'])
+KeyError: 'step'

@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch.optim.lr_scheduler as lrSched
 from util.mytorch import np2pt
 
 def build_model(build_config, device, mode):
@@ -8,10 +9,12 @@ def build_model(build_config, device, mode):
     if mode == 'train':
         # model_state, step_fn, save, load
         optimizer = torch.optim.Adam(model.parameters(), **build_config.optimizer.params)
+        scheduler = lrSched.StepLR(optimizer,step_size=25000,gamma=0.1)
         criterion_l1 = nn.L1Loss()
         model_state = {
             'model': model,
             'optimizer': optimizer,
+            'scheduler':scheduler,
             'steps': 0,
             # static, no need to be saved
             'criterion_l1': criterion_l1,
@@ -43,6 +46,7 @@ def train_step(model_state, data, train=True):
     meta = {}
     model = model_state['model']
     optimizer = model_state['optimizer']
+    scheduler = model_state['scheduler']
     criterion_l1 = model_state['criterion_l1']
     device = model_state['device']
     grad_norm = model_state['grad_norm']
@@ -65,6 +69,7 @@ def train_step(model_state, data, train=True):
         torch.nn.utils.clip_grad_norm_(model.parameters(),
             max_norm=grad_norm)
         optimizer.step()
+        scheduler.step()
 
     with torch.no_grad():
         model.eval()
