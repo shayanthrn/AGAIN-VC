@@ -15,10 +15,22 @@ def convert_to_second(x):
 
 parser = get_parser(description='deepmine_preprocessor')
 parser.add_argument('--path', '-p', default='./', help='wav folder of deepmine dataset')
+parser.add_argument('--female', '-f', default=26, help='number of females')
+parser.add_argument('--male', '-m', default=31, help='number of males')
 args = parser.parse_args()
+nfemales = 0
+nmales = 0
 if(args.path[-1]!="/"):
     args.path+="/"
-
+if(int(args.female)>26):
+    nfemales = 26
+else:
+    nfemales = int(args.female)
+if(int(args.male)>31):
+    nmales = 31
+else:
+    nmales = int(args.female)    
+    
 speakerlist = open("speakers.lst","r")
 speakers  = speakerlist.readlines()
 speakers_list = []
@@ -54,11 +66,36 @@ final_listofdataset = []
 
 
 #min file from speaker = 6
-
+unseen_speakers = []
 for speaker in finalspeakers:
     spkid = speaker['id']
-    final_listofdataset+= random.sample([a for a in files_list if a['speaker_id'] == spkid],6)
+    if(len([a for a in files_list if a['speaker_id'] == spkid])<15):
+        unseen_speakers.append(spkid)
 
+for speaker in females:
+    if(nfemales==0):
+        break
+    spkid = speaker['id']
+    if(len([a for a in files_list if a['speaker_id'] == spkid])<15):
+        unseen_speakers.append(spkid)
+    else:
+        final_listofdataset+= random.sample([a for a in files_list if a['speaker_id'] == spkid],15)
+    nfemales -= 1
+
+for speaker in males:
+    if(nmales==0):
+        break
+    spkid = speaker['id']
+    if(len([a for a in files_list if a['speaker_id'] == spkid])<15):
+        unseen_speakers.append(spkid)
+    else:
+        final_listofdataset+= random.sample([a for a in files_list if a['speaker_id'] == spkid],15)
+    nmales -= 1
+
+unseen_speakers_file = open('unseenspeakers_list.lst','w')
+for spk in unseen_speakers:
+    unseen_speakers_file.write(str(spk))
+    unseen_speakers_file.write("\n")
 
 transcripts = open('all_segments.lst')
 transcripts = transcripts.readlines()
