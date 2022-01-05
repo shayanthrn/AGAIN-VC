@@ -9,13 +9,15 @@ def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 
-print("installing dependencies...")
-packages = ['pyworld','resemblyzer','wandb','librosa','soundfile','requests']
-for package in packages:
-    try:
-        install(package)
-    except:
-        pass
-    
-clearConsole()
-print("dependencies installed succesfully!")
+# print("installing dependencies...")
+# packages = ['pyworld','resemblyzer','wandb','librosa','soundfile','requests']
+# for package in packages:
+#     try:
+#         install(package)
+#     except:
+#         pass
+
+# clearConsole()
+# print("dependencies installed succesfully!")
+
+current_path = os.getcwd() + "/"

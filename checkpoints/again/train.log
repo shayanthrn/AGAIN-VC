@@ -1,0 +1,10 @@
+Start to generate metadata(train) using ./data/indexes/vctk/indexes.pkl
+Start to generate metadata(train) using ./data/indexes/vctk/indexes.pkl
+Start to generate metadata(dev) using ./data/indexes/vctk/indexes.pkl
+Failed checking if running in CYGWIN due to: FileNotFoundError(2, 'The system cannot find the file specified', None, 2, None)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=C:\university\Thesis\AGAIN-VC, universal_newlines=False, shell=None, istream=None)
+Popen(['git', 'cat-file', '--batch-check'], cwd=C:\university\Thesis\AGAIN-VC, universal_newlines=False, shell=None, istream=<valid stream>)
+=> load train, dev data from checkpoints/again\
+Failed checking if running in CYGWIN due to: FileNotFoundError(2, 'The system cannot find the file specified', None, 2, None)
+Popen(['git', 'rev-parse', '--show-toplevel'], cwd=C:\university\Thesis\AGAIN-VC, universal_newlines=False, shell=None, istream=None)
+Popen(['git', 'cat-file', '--batch-check'], cwd=C:\university\Thesis\AGAIN-VC, universal_newlines=False, shell=None, istream=<valid stream>)
