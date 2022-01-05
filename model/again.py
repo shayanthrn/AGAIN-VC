@@ -9,7 +9,7 @@ def build_model(build_config, device, mode):
     if mode == 'train':
         # model_state, step_fn, save, load
         optimizer = torch.optim.Adam(model.parameters(), **build_config.optimizer.params)
-        scheduler = lrSched.ExponentialLR(optimizer,gamma=0.99995)
+        scheduler = lrSched.ExponentialLR(optimizer,gamma=0.99994)
         criterion_l1 = nn.L1Loss()
         model_state = {
             'model': model,
