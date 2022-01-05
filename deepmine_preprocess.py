@@ -5,7 +5,6 @@ import librosa
 import soundfile as sf
 
 
-
 def convert_to_second(x):
     splited = x.split(':')
     min_to_sec = float(splited[1])*60
@@ -15,8 +14,8 @@ def convert_to_second(x):
 
 parser = get_parser(description='deepmine_preprocessor')
 parser.add_argument('--path', '-p', default='./', help='wav folder of deepmine dataset')
-parser.add_argument('--female', '-f', default=26, help='number of females')
-parser.add_argument('--male', '-m', default=31, help='number of males')
+parser.add_argument('--female', '-f', default=25, help='number of females')
+parser.add_argument('--male', '-m', default=32, help='number of males')
 args = parser.parse_args()
 nfemales = 0
 nmales = 0
@@ -72,25 +71,23 @@ for speaker in finalspeakers:
     if(len([a for a in files_list if a['speaker_id'] == spkid])<15):
         unseen_speakers.append(spkid)
 
+
 for speaker in females:
     if(nfemales==0):
         break
     spkid = speaker['id']
-    if(len([a for a in files_list if a['speaker_id'] == spkid])<15):
-        unseen_speakers.append(spkid)
-    else:
+    if(len([a for a in files_list if a['speaker_id'] == spkid])>=15):
         final_listofdataset+= random.sample([a for a in files_list if a['speaker_id'] == spkid],15)
-    nfemales -= 1
+        nfemales -= 1
 
 for speaker in males:
     if(nmales==0):
         break
     spkid = speaker['id']
-    if(len([a for a in files_list if a['speaker_id'] == spkid])<15):
-        unseen_speakers.append(spkid)
-    else:
+    if(len([a for a in files_list if a['speaker_id'] == spkid])>=15):
         final_listofdataset+= random.sample([a for a in files_list if a['speaker_id'] == spkid],15)
-    nmales -= 1
+        nmales -= 1
+
 
 unseen_speakers_file = open('unseenspeakers_list.lst','w')
 for spk in unseen_speakers:
@@ -125,7 +122,7 @@ for file in final_listofdataset:
     file_segments = segments[file['file_id']]
     idcounter = 0
     for segment in file_segments:
-        outputname = path + file['speaker_id'] + "_" + str(idcounter) + ".wav"
+        outputname = path + file['speaker_id'] + "_" +file['file_id']+ str(idcounter) + ".wav"
         start = segment[0] * sr
         end = segment[1] * sr
         data = audio[int(start):int(end)]
