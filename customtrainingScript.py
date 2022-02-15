@@ -29,4 +29,4 @@ current_path = os.getcwd() + "/"
 subprocess.check_call([ "python", "deepmine_preprocess.py", "--path", datasetpath])
 subprocess.check_call([ "python", "preprocess.py", "-c", "config/preprocess.yaml"])
 subprocess.check_call([ "python", "make_indexes.py", "-c", "config/make_indexes.yaml"])
-subprocess.check_call([ "python", "train.py", "-c", "config/train_again-c4s.yaml","--seed","1234567","--total-steps","100000","--save-steps","5000"])
+# subprocess.check_call([ "python", "train.py", "-c", "config/train_again-c4s.yaml","--seed","1234567","--total-steps","100000","--save-steps","5000"])

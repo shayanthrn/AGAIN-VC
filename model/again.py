@@ -69,7 +69,7 @@ def train_step(model_state, data, train=True):
         torch.nn.utils.clip_grad_norm_(model.parameters(),
             max_norm=grad_norm)
         optimizer.step()
-        scheduler.step()
+        # scheduler.step()
 
     with torch.no_grad():
         model.eval()
