@@ -11,6 +11,7 @@ def build_model(build_config, device, mode):
         optimizer = torch.optim.Adam(model.parameters(), **build_config.optimizer.params)
         scheduler = lrSched.ExponentialLR(optimizer,gamma=0.99994)
         criterion_l1 = nn.L1Loss()
+        criterion_l2 = nn.MSELoss()
         model_state = {
             'model': model,
             'optimizer': optimizer,
@@ -18,6 +19,7 @@ def build_model(build_config, device, mode):
             'steps': 0,
             # static, no need to be saved
             'criterion_l1': criterion_l1,
+            'criterion_l2':criterion_l2,
             'device': device,
             'grad_norm': build_config.optimizer.grad_norm,
             # this list restores the dynamic states
@@ -48,6 +50,7 @@ def train_step(model_state, data, train=True):
     optimizer = model_state['optimizer']
     scheduler = model_state['scheduler']
     criterion_l1 = model_state['criterion_l1']
+    criterion_l2 = model_state['criterion_l2']
     device = model_state['device']
     grad_norm = model_state['grad_norm']
 
@@ -58,10 +61,10 @@ def train_step(model_state, data, train=True):
         model.eval()
 
     x = data['mel'].to(device)
-
-    dec = model(x)
+    #data speaker label should be retrieved
+    dec, speaker = model(x)
     loss_rec = criterion_l1(dec, x)
-
+    loss_speaker = criterion_l2(speaker)
     loss = loss_rec
 
     if train:
@@ -362,12 +365,21 @@ class Activation(nn.Module):
     def forward(self, x):
         return self.act(x)
 
+class SpeakerRecognition(nn.Module):
+    def __init__(self):
+        super().__init__()
+    
+    def forward(self,means,standard_devs):
+        return [0 for i in range(50)]
+
+
 class Model(nn.Module):
     def __init__(self, encoder_params, decoder_params, activation_params):
         super().__init__()
 
         self.encoder = Encoder(**encoder_params)
         self.decoder = Decoder(**decoder_params)
+        self.speakerRecognition = SpeakerRecognition()
         self.act = Activation(**activation_params)
 
     def forward(self, x, x_cond=None):
@@ -384,9 +396,9 @@ class Model(nn.Module):
 
         enc = (self.act(enc), mns_enc, sds_enc)
         cond = (self.act(cond), mns_cond, sds_cond)
-
+        speaker = self.speakerRecognition(mns_cond, sds_cond)
         y = self.decoder(enc, cond)
-        return y
+        return y,speaker
 
     def inference(self, source, target):
 
