@@ -17,7 +17,7 @@ class Dataset(BaseDataset):
         for speaker in self.listofspeakers:
             temp = torch.zeros(len(self.listofspeakers))
             temp[i] = 1.0
-            self.labelofspeakers[speaker] = temp
+            self.labelofspeakers[speaker[1:]] = temp
             i+=1
 
 
