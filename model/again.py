@@ -64,7 +64,7 @@ def train_step(model_state, data, train=True):
     #data speaker label should be retrieved
     dec, speaker = model(x)
     loss_rec = criterion_l1(dec, x)
-    loss_speaker = criterion_l2(speaker)
+    # loss_speaker = criterion_l2(speaker)
     loss = loss_rec
 
     if train:
@@ -368,9 +368,19 @@ class Activation(nn.Module):
 class SpeakerRecognition(nn.Module):
     def __init__(self):
         super().__init__()
+        self.dense_layers = nn.Sequential(
+            nn.Linear(3072, 256),
+            nn.ReLU(),
+            nn.Linear(256, 128),
+            nn.ReLU(),
+            nn.Linear(128, 50)
+        )
+        self.softmax = nn.Softmax(dim=1)
     
-    def forward(self,means,standard_devs):
-        return [0 for i in range(50)]
+    def forward(self,input_data):
+        logits = self.dense_layers(input_data)
+        predictions = self.softmax(logits)
+        return predictions
 
 
 class Model(nn.Module):
@@ -396,7 +406,11 @@ class Model(nn.Module):
 
         enc = (self.act(enc), mns_enc, sds_enc)
         cond = (self.act(cond), mns_cond, sds_cond)
-        speaker = self.speakerRecognition(mns_cond, sds_cond)
+        inputlayer=mns_cond+sds_cond
+        mnsdvector = torch.cat(inputlayer,dim=1)
+        shape = mnsdvector.shape
+        mnsdvector = mnsdvector.reshape(shape[0],shape[1])
+        speaker = self.speakerRecognition(mnsdvector)
         y = self.decoder(enc, cond)
         return y,speaker
 
