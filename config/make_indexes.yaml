@@ -6,8 +6,8 @@ output_path: './data/indexes/vctk'
 indexer_name: vctk
 
 split_all:
-    train: 55
-    dev: 30
+    train: 50
+    dev: 20
 
 split_train:
     train: 200

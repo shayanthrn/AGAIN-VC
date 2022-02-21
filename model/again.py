@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim.lr_scheduler as lrSched
+import os
 from util.mytorch import np2pt
 
 def build_model(build_config, device, mode):
@@ -61,11 +62,12 @@ def train_step(model_state, data, train=True):
         model.eval()
 
     x = data['mel'].to(device)
+    label = data['label'].to(device)
     #data speaker label should be retrieved
     dec, speaker = model(x)
     loss_rec = criterion_l1(dec, x)
-    # loss_speaker = criterion_l2(speaker)
-    loss = loss_rec
+    loss_speaker = criterion_l2(speaker,label)
+    loss = loss_rec + loss_speaker
 
     if train:
         loss.backward()
@@ -368,12 +370,13 @@ class Activation(nn.Module):
 class SpeakerRecognition(nn.Module):
     def __init__(self):
         super().__init__()
+        self.listofspeakers = os.listdir("./data/wav48")
         self.dense_layers = nn.Sequential(
             nn.Linear(3072, 256),
             nn.ReLU(),
             nn.Linear(256, 128),
             nn.ReLU(),
-            nn.Linear(128, 50)
+            nn.Linear(128, len(self.listofspeakers))
         )
         self.softmax = nn.Softmax(dim=1)
     
