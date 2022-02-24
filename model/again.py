@@ -12,7 +12,7 @@ def build_model(build_config, device, mode):
         optimizer = torch.optim.Adam(model.parameters(), **build_config.optimizer.params)
         scheduler = lrSched.ExponentialLR(optimizer,gamma=0.99994)
         criterion_l1 = nn.L1Loss()
-        criterion_l2 = nn.MSELoss()
+        criterion_l2 = nn.CrossEntropyLoss()
         model_state = {
             'model': model,
             'optimizer': optimizer,
@@ -90,6 +90,8 @@ def train_step(model_state, data, train=True):
 
     meta['log'] = {
         'loss_rec': loss_rec.item(),
+        'loss_speaker': loss_speaker.item(),
+        'total_loss': loss.item()
     }
     meta['mels'] = {
         'src': m_src,
@@ -372,9 +374,7 @@ class SpeakerRecognition(nn.Module):
         super().__init__()
         self.listofspeakers = os.listdir("./data/wav48")
         self.dense_layers = nn.Sequential(
-            nn.Linear(3072, 256),
-            nn.ReLU(),
-            nn.Linear(256, 128),
+            nn.Linear(3072, 128),
             nn.ReLU(),
             nn.Linear(128, len(self.listofspeakers))
         )
