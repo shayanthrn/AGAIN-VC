@@ -378,12 +378,13 @@ class SpeakerRecognition(nn.Module):
             nn.ReLU(),
             nn.Linear(128, len(self.listofspeakers))
         )
-        self.softmax = nn.Softmax(dim=1)
+        # self.softmax = nn.Softmax(dim=1)
     
     def forward(self,input_data):
         logits = self.dense_layers(input_data)
-        predictions = self.softmax(logits)
-        return predictions
+        # predictions = self.softmax(logits)
+        # return predictions
+        return logits
 
 
 class Model(nn.Module):
