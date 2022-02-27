@@ -4,6 +4,8 @@ import logging
 import numpy as np
 from glob import glob
 from tqdm import tqdm
+import librosa
+import soundfile as sf
 
 from preprocessor.base import preprocess_one
 from .base import BaseAgent
@@ -95,6 +97,7 @@ class Inferencer(BaseAgent):
                 wav_data[feat] = preprocess_one((wav_path, basename), module)
                 if seglen is not None:
                     wav_data[feat] = wav_data[feat][:,:seglen]
+                    print(wav_data[feat].shape)
                 wav_data.set_processed()
             return
 

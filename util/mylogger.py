@@ -19,7 +19,7 @@ def get_writer(config, args, ckpt_dir_flag):
 
 class BaseWriter():
     dummy = lambda *arg, **kwargs: None
-    def __init__(self, config, args, **kwargs):
+    def __init__(self, config, *args, **kwargs):
         self.config = config
         self.args = args
         self.config['_args'] = args

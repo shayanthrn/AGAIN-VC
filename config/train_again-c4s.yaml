@@ -1,6 +1,6 @@
 _name: 'train_again'
 
-writer: wandb
+writer: logging
 ckpt_dir: checkpoints/again
 flag: c4s
 
