@@ -375,7 +375,7 @@ class SpeakerRecognition(nn.Module):
         self.listofspeakers = os.listdir("./data/wav48")
         self.dense_layers = nn.Sequential(
             nn.Linear(3072, 128),
-            nn.ReLU(),
+            nn.LeakyReLU(0.2),
             nn.Linear(128, len(self.listofspeakers))
         )
         # self.softmax = nn.Softmax(dim=1)
@@ -410,12 +410,17 @@ class Model(nn.Module):
 
         enc = (self.act(enc), mns_enc, sds_enc)
         cond = (self.act(cond), mns_cond, sds_cond)
-        inputlayer=mns_cond+sds_cond
+        
+
+
+        y = self.decoder(enc, cond)
+        yenc, ymns_enc, ysds_enc = self.encoder(y)
+
+        inputlayer=ymns_enc+ysds_enc
         mnsdvector = torch.cat(inputlayer,dim=1)
         shape = mnsdvector.shape
         mnsdvector = mnsdvector.reshape(shape[0],shape[1])
         speaker = self.speakerRecognition(mnsdvector)
-        y = self.decoder(enc, cond)
         return y,speaker
 
     def inference(self, source, target):
